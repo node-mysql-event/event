@@ -56,8 +56,8 @@ app.post('/send', (req, res) => {
           body = JSON.parse(body);
 
             // If not successful
-          if (body.success !== undefined && !body.success)
-            return res.json({ success: false, msg: 'Failed captcha verification' });
+          // if (body.success !== undefined && !body.success)
+          //   return res.json({ success: false, msg: 'Failed captcha verification' });
 
           // If successful
           return res.json({ success: true, msg: 'Captcha passed' });
