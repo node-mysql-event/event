@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Registration</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link
+     rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+     integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+     crossorigin="anonymous"
+   />
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="wrapper animated bounceInLeft">
+      <div class="side-info">
+        <img src="public/images/Jets-Logo.png" alt="logo">
+        <br>
+        <br>
+        <br>
+        <h1>Event Registration</h1>
+      </div>
+      <div class="contact">
+        <h3>Personal Information</h3>
+        {{msg}}
+        <form method="POST" action="/send" id="verifyForm" enctype="multipart/form-data">
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name">
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email">
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone">
+          </p>
+          <br>
+            <h3>Event Information</h3>
+            <br>
+          <p>
+            <label>Title</label>
+            <input type="text" name="title" id="title">
+          </p>
+          <p>
+            <label>Date</label>
+            <input type="date" name="date" id="date">
+          </p>
+          <p>
+            <label>Time</label>
+            <input type="time" name="time" id="time">
+          </p>
+          <p>
+            <label>Venue</label>
+            <input type="text" name="venue" id="venue">
+          </p>
+          <p>
+            <label>City</label>
+            <input type="text" name="city" id="city">
+          </p>
+          <p>
+            <label>State</label>
+            <input type="text" name="state" id="state">
+          </p>
+          <p>
+            <label>Postal Code</label>
+            <input type="text" name="code" id="code" >
+          </p>
+          <p>
+            <label for="img">Select image</label>
+            <input type="file" id="img" name="img" accept="image/*" multiple >
+          </p>
+          <p class="full">
+           <label>Description</label>
+            <textarea name="description" id="description" rows="5"></textarea>
+          </p>
+
+
+
+          <div class="form-group">
+         <div
+           class="g-recaptcha"
+           data-sitekey="6Lc6TsgaAAAAAHOzMj7dQ5vzkVkRVObF192crAT0"
+         ></div>
+       </div>
+
+          <p class="full">
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+     document.getElementById('verifyForm').addEventListener('submit', e => {
+       e.preventDefault();
+
+       const name = document.querySelector('#name').value;
+       const email = document.querySelector('#email').value;
+       const phone = document.querySelector('#phone').value;
+       const title = document.querySelector('#title').value;
+       const date = document.querySelector('#date').value;
+       const time = document.querySelector('#time').value;
+       const venue = document.querySelector('#venue').value;
+       const city = document.querySelector('#city').value;
+       const state = document.querySelector('#state').value;
+       const code = document.querySelector('#code').value;
+       const img = document.querySelector('#img').value;
+       const description = document.querySelector('#description').value;
+       const captcha = document.querySelector('#g-recaptcha-response').value;
+
+       return fetch('/send', {
+         method: 'POST',
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-type': 'application/json' },
+         body: JSON.stringify({ name, email, phone, title, date, time, venue,
+            city, state, code, img, description, captcha })
+       })
+         .then(res => res.json())
+         .then(data => {
+           console.log(data);
+           alert(data.msg);
+           if (data.success) return location.reload();
+         });
+     });
+   </script>
+
+
+
+
+
+</body>
+</html>
