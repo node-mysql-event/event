@@ -101,7 +101,7 @@ ignoreTLS: false,
 secure: false, // true for 465, false for other ports like 587
     auth: {
         user: "sdobhal1234@gmail.com", // generated ethereal user
-        pass: "Dobhal@shristi123"  // generated ethereal password
+        pass: "zetnzcfajtpkiqhs"  // generated ethereal password
     }
 
   });
