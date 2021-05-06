@@ -100,15 +100,15 @@ app.post('/send', (req, res) => {
 ignoreTLS: false,
 secure: false, // true for 465, false for other ports like 587
     auth: {
-        user: process.env.USER, // generated ethereal user
-        pass: process.env.PASSWORD  // generated ethereal password
+        user: "sdobhal1234@gmail.com", // generated ethereal user
+        pass: "Dobhal@shristi123"  // generated ethereal password
     }
 
   });
 
   // setup email data with unicode symbols
   let mailOptions = {
-      from: process.env.EMAIL, // sender address
+      from: '<sdobhal1234@gmail.com>', // sender address
       to: req.body.email, // list of receivers
       subject: 'Event Registration', // Subject line
       text: 'Hello world?', // plain text body
