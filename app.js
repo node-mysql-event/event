@@ -103,6 +103,9 @@ secure: true, // true for 465, false for other ports like 587
         user: process.env.USER, // generated ethereal user
         pass: process.env.PASSWORD  // generated ethereal password
     },
+    tls:{
+      rejectUnauthorized: false
+    }
 
   });
 
