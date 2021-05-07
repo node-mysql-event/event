@@ -44,6 +44,7 @@ ul{
   color: #ffd304;
   font-weight: bolder;
   text-align: center;
+  width:105%;
 }
 
 .side-info h3{
@@ -139,6 +140,9 @@ ul{
   }
   .contact{
     background:#f9feff;
+    width:100%;
+  }
+  .side-info{
     width:100%;
   }
 }
