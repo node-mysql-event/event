@@ -36,7 +36,7 @@ ul{
 }
 
 .wrapper > *{
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .side-info{
@@ -53,6 +53,7 @@ ul{
 
 .contact{
   background:#f9feff;
+  width:105%;
 }
 
 /* FORM STYLES */
@@ -135,5 +136,9 @@ ul{
     width:100%;
     padding:1em;
     border:1px solid #c9e6ff;
+  }
+  .contact{
+    background:#f9feff;
+    width:100%;
   }
 }
