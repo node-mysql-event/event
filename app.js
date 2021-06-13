@@ -94,7 +94,7 @@ app.get('/registration-form', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('events');
+  res.render('registration-form');
 });
 
 
