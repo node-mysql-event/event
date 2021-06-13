@@ -33,9 +33,9 @@ const mysql = require("mysql");
 
 var mysqlConnection=mysql.createConnection({
   host:"eventdb.cexlqevmgh8c.us-east-2.rds.amazonaws.com",
-  user:"root",
-  password:"",
-  database:"client",
+  user:"admin",
+  password:"admin123",
+  database:"event",
   multipleStatements : true
 });
 
@@ -119,7 +119,7 @@ var img = new Array();
           console.log('file received');
           console.log(req);
 
-          var sql = "INSERT INTO tests (id, name, email, phone, title, date, time, venue, city, state, code, img, img2, img3, img4, img5, description) VALUES (null , '"+req.body.name+"', '"+req.body.email+"', '"+req.body.phone+"', '"+req.body.title+"', '"+req.body.date+"', '"+req.body.time+"', '"+req.body.venue+"', '"+req.body.city+"', '"+req.body.state+"', '"+req.body.code+"', '" + img[0] + "', '" + img[1] + "', '" + img[2] + "', '" + img[3] + "', '" + img[4] + "', '"+req.body.description+"')";
+          var sql = "INSERT INTO registered_users (id, name, email, phone, title, date, time, venue, city, state, code, img, img2, img3, img4, img5, description) VALUES (null , '"+req.body.name+"', '"+req.body.email+"', '"+req.body.phone+"', '"+req.body.title+"', '"+req.body.date+"', '"+req.body.time+"', '"+req.body.venue+"', '"+req.body.city+"', '"+req.body.state+"', '"+req.body.code+"', '" + img[0] + "', '" + img[1] + "', '" + img[2] + "', '" + img[3] + "', '" + img[4] + "', '"+req.body.description+"')";
 
             mysqlConnection.query(sql, function(err) {
               if (err) throw err;
@@ -169,7 +169,7 @@ var img = new Array();
 
 
 ///mail
-    var sql='SELECT * FROM tests';
+    var sql='SELECT * FROM registered_users';
     mysqlConnection.query(sql, function (err, data, fields) {
     if (err) throw err;
 
@@ -270,7 +270,7 @@ var img = new Array();
 
 
 
-      // var sql='SELECT * FROM clients';
+      // var sql='SELECT * FROM selected_users';
       // mysqlConnection.query(sql, function (err, data, fields) {
       // if (err) throw err;
       res.render('admin');
@@ -280,7 +280,7 @@ var img = new Array();
 
 
  // app.get('/dashboard',(req, res)=>{
- //   var sql = "SELECT * FROM tests";
+ //   var sql = "SELECT * FROM registered_users";
  //   sqlConnection.query(sql, (err, rows)=>{
  //     if(err)
  //     {
@@ -319,7 +319,7 @@ var img = new Array();
  app.get('/dashboard', function(req, res, next) {
    if(req.session.user){
 
-     var sql='SELECT * FROM tests';
+     var sql='SELECT * FROM registered_users';
      mysqlConnection.query(sql, function (err, data, fields) {
      if (err) throw err;
      res.render('user-list', { title: 'User List', userData: data, user : req.session.user});
@@ -356,7 +356,7 @@ var img = new Array();
 
  app.use('/delete/:id', function(req, res, next) {
   var id= req.params.id;
-    var sql = 'DELETE FROM tests WHERE id = ?';
+    var sql = 'DELETE FROM registered_users WHERE id = ?';
     mysqlConnection.query(sql, [id], function (err, data) {
     if (err) throw err;
     console.log(data.affectedRows + " record(s) updated");
@@ -368,8 +368,8 @@ var img = new Array();
 
 app.use('/add/:id', function(req, res, next) {
  var id= req.params.id;
-   var sql = "INSERT INTO `clients` SELECT * FROM tests WHERE id = ?";
-   var sql2 = 'DELETE FROM tests WHERE id = ?';
+   var sql = "INSERT INTO `selected_users` SELECT * FROM registered_users WHERE id = ?";
+   var sql2 = 'DELETE FROM registered_users WHERE id = ?';
 
    mysqlConnection.query(sql, [id], function (err, data) {
    if (err) {
@@ -392,7 +392,7 @@ app.get('/events', (req, res) => {
 
 
 
-    var sql='SELECT * FROM clients';
+    var sql='SELECT * FROM selected_users';
     mysqlConnection.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render('events', { title: 'User List', userData: data});
