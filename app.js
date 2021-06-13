@@ -93,6 +93,10 @@ app.get('/registration-form', (req, res) => {
   res.render('registration-form');
 });
 
+app.get('/', (req, res) => {
+  res.render('events');
+});
+
 
 
 app.post('/send', upload.array('uploaded_file'), (req, res) => {
