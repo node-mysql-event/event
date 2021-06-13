@@ -146,3 +146,66 @@ ul{
     width:100%;
   }
 }
+
+
+
+/* admin page */
+#login{
+  background-color: #222;
+  color: #ffd304;
+  font-weight: bolder;
+  text-align: center;
+  width:100%;
+  border-radius: 30px;
+   box-shadow: 15px 15px 10px black;
+}
+
+ h2{
+   font-weight: bolder;
+     text-shadow: 2px 2px black;
+ }
+
+ .form-group{
+   width:50%;
+   margin: 0 auto;
+   margin-bottom: 20px;
+ }
+
+
+
+/* event page */
+#event-list{
+  background-color: #222;
+  color: white;
+  width: 100%;
+  text-align: center;
+  overflow: scroll;
+}
+
+
+
+h2,h4{
+  text-align: center;
+  color: #ffd304;
+  font-weight: bolder;
+  margin-bottom: 20px;
+
+}
+
+/* LARGE SCREENS */
+@media(min-width:700px){
+  #event-list{
+    overflow: auto;
+  }
+
+}
+
+
+/* user-list page */
+#logout{
+  background-color: #222;
+  color: #ffd304;
+  font-weight: bolder;
+  text-align: center;
+  width:100%;
+}

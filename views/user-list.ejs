@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Registration</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link
+     rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+     integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+     crossorigin="anonymous"
+   />
+
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/events.css">
+
+</head>
+<body style="background : #f8f8ff;">
+
+  <nav class="navbar navbar-inverse header">
+    <div class="container-fluid">
+      <img src="public/images/Jets-Logo.png" alt="logo" id="logo">
+      <div class="navbar-header">
+        <h1 id="jets">IPSWICH JETS</h1>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right " id="horizontal-list">
+
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="text-center center-div mt-3 mb-5" >
+  <div class="container  py-3 mt-3" >
+  <h2>Welcome to Admin Dashboard</h2>
+    <!-- <button class="btn btn-secondary "><a href="/logout">LOGOUT</a></button> -->
+  </div>
+  </div>
+
+<h4 class="mt-2 mb-5">LIST OF EVENTS</h4>
+
+<div class="row">
+  <%
+  if(userData.length!=0){
+  var i=1;
+  userData.forEach(function(data){
+    var event=data.date;
+  var event_date= event.toLocaleString('en-US', {
+
+    day: 'numeric', // numeric, 2-digit
+    month: 'long', // numeric, 2-digit, long, short, narrow
+
+    year: 'numeric', // numeric, 2-digit
+
+});
+
+  %>
+  <div class="column">
+    <div class="card" id="myImg" mytitle="Event <%=i %>" style="background-image:url('public/uploads/<%=data.img%>')" >
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <h3><%=data.title %></h3>
+
+
+      <div id="content" class="mytext">
+        <p>Name : <%=data.name %></p>
+        <p>Emai : <%=data.email %></p>
+        <p>Number : <%=data.phone %></p>
+        <p>Title : <%=data.title %></p>
+        <p>Date : <%=event_date %></p>
+        <p>Time : <%=data.time %></p>
+        <p>Venue : <%=data.venue %></p>
+        <p>City : <%=data.city %></p>
+        <p>State : <%=data.state %></p>
+        <p>Postal Code : <%=data.code %></p>
+        <p>Description : <%=data.description %></p>
+
+        <% if(data.img!='undefined'){%>
+           <img src="public/uploads/<%=data.img%>" alt="">
+         <%}%>
+         <% if(data.img2!='undefined'){%>
+            <img src="public/uploads/<%=data.img2%>" alt="">
+          <%}%>
+          <% if(data.img3!='undefined'){%>
+               <img src="public/uploads/<%=data.img3%>" alt="">
+           <%}%>
+           <% if(data.img4!='undefined'){%>
+              <img src="public/uploads/<%=data.img4%>" alt="">
+            <%}%>
+            <% if(data.img5!='undefined'){%>
+                 <img src="public/uploads/<%=data.img5%>" alt="">
+             <%}%>
+
+
+
+
+
+        <div class="w3-section">
+          <button class="w3-button w3-green"><a href="/add/<%=data.id%>">ADD</a></button>
+          <button class="w3-button w3-red"><a href="/delete/<%=data.id%>">DELETE</a></button>
+        </div>
+      </div>
+    </div>
+      </div>
+
+
+<%  i++; });  %>
+</div>
+<% } else{ %>
+  <div class="row">
+  <div class="column">
+    <div class="card" id="myImg" mytitle="card <%=i %>">
+      <br>
+      <br>
+      <p>No records found here!</p>
+      <br>
+      <br>
+      </div>
+      </div>
+    </div>
+
+<% };%>
+
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+
+    <div class="card modal-content" id="img01">
+      <h3>Card</h3>
+      <div >  </div>
+
+
+    </div>
+  </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+// var content = document.getElementById("content");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+// var img = document.getElementsByClassName("card");
+
+// var modalImg = document.getElementById("img01");
+// var captionText = document.getElementById("caption");
+
+const els = document.querySelectorAll(".card")
+for (const el of els) {
+  el.addEventListener('click', function(event) {
+    $('.modal-content h3').html($(this).attr("mytitle"));
+      $('.modal-content div').html($(this).find(".mytext").html());
+
+    modal.style.display = "block";
+    content.style.display = "block";
+  })
+}
+
+// el.onclick = function(){
+//
+//
+//   // // content.style.display = "block";
+//   // modalImg.innerHTML = this.innerHTML;
+//   // // captionText.innerHTML = this.alt;
+// }
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+</body>
+</html>

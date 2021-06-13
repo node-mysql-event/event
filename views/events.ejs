@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Registration</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link
+     rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+     integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+     crossorigin="anonymous"
+   />
+
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/events.css">
+
+</head>
+<body style="background : #f8f8ff;">
+
+<nav class="navbar navbar-inverse header">
+  <div class="container-fluid">
+    <img src="public/images/Jets-Logo.png" alt="logo" id="logo">
+    <div class="navbar-header">
+      <h1 id="jets">IPSWICH JETS</h1>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right " id="horizontal-list">
+      <li><a href="/registration-form"><span class="glyphicon glyphicon-user"></span> Event Registration</a></li>
+      <li><a href="/admin"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- <nav class="navbar ">
+<h4 id="jets"></h4>
+</nav> -->
+<!-- As a heading -->
+<!-- <nav class="navbar navbar-light bg-light header">
+  <span class=" h1 jets">ipswich      jets</span>
+<div class="bu">
+  <button class="btn btn-primary "><a href="/admin">ADMIN LOGIN</a></button>
+  <button class="btn btn-primary right"><a href="/registration-form">EVENT REGISTRATION</a></button>
+
+</div>
+
+</nav> -->
+
+<!-- <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand jets" href="#">ipswich      jets</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/registration-form"><span class="glyphicon glyphicon-user"></span> Event Registration</a></li>
+      <li><a href="/admin"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
+    </ul>
+  </div>
+</nav> -->
+
+
+
+<h4>LIST OF EVENTS</h4>
+
+<div class="row">
+  <%
+  if(userData.length!=0){
+  var i=1;
+  userData.forEach(function(data){
+    var event=data.date;
+  var event_date= event.toLocaleString('en-US', {
+
+    day: 'numeric', // numeric, 2-digit
+    month: 'long', // numeric, 2-digit, long, short, narrow
+
+    year: 'numeric', // numeric, 2-digit
+
+});
+
+  %>
+  <div class="column">
+    <div class="card" id="myImg" mytitle="Event <%=i %>" style="background-image:url('public/uploads/<%=data.img%>')"   >
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <h3><%=data.title %></h3>
+
+
+
+      <div id="content" class="mytext">
+        <p>Name : <%=data.name %></p>
+        <p>Emai : <%=data.email %></p>
+        <p>Number : <%=data.phone %></p>
+        <p>Title : <%=data.title %></p>
+        <p>Date : <%=event_date%>;</p>
+        <p>Time : <%=data.time %></p>
+        <p>Venue : <%=data.venue %></p>
+        <p>City : <%=data.city %></p>
+        <p>State : <%=data.state %></p>
+        <p>Postal Code : <%=data.code %></p>
+        <p>Description : <%=data.description %></p>
+        <% if(data.img!='undefined'){%>
+           <img src="public/uploads/<%=data.img%>" alt="">
+         <%}%>
+         <% if(data.img2!='undefined'){%>
+            <img src="public/uploads/<%=data.img2%>" alt="">
+          <%}%>
+          <% if(data.img3!='undefined'){%>
+               <img src="public/uploads/<%=data.img3%>" alt="">
+           <%}%>
+           <% if(data.img4!='undefined'){%>
+              <img src="public/uploads/<%=data.img4%>" alt="">
+            <%}%>
+            <% if(data.img5!='undefined'){%>
+                 <img src="public/uploads/<%=data.img5%>" alt="">
+             <%}%>
+        <!-- <p>image : <%=data.img%></p> -->
+
+
+
+      </div>
+    </div>
+  </div>
+
+<%  i++; });  %>
+</div>
+<% } else{ %>
+  <div class="row">
+  <div class="column">
+    <div class="card" id="myImg" mytitle="card <%=i %>">
+      <br>
+      <br>
+      <p>No records found here!</p>
+      <br>
+      <br>
+      </div>
+      </div>
+    </div>
+  </div>
+<% };%>
+
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+
+    <div class="card modal-content" id="img01">
+      <h3>Card </h3>
+      <div >  </div>
+
+
+    </div>
+  </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+// var content = document.getElementById("content");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+// var img = document.getElementsByClassName("card");
+
+// var modalImg = document.getElementById("img01");
+// var captionText = document.getElementById("caption");
+
+const els = document.querySelectorAll(".card")
+for (const el of els) {
+  el.addEventListener('click', function(event) {
+    $('.modal-content h3').html($(this).attr("mytitle"));
+      $('.modal-content div').html($(this).find(".mytext").html());
+
+    modal.style.display = "block";
+    content.style.display = "block";
+  })
+}
+
+// el.onclick = function(){
+//
+//
+//   // // content.style.display = "block";
+//   // modalImg.innerHTML = this.innerHTML;
+//   // // captionText.innerHTML = this.alt;
+// }
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- // Static folder
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+//fetch databasevar
+logger = require('morgan');
+var cookieParser = require('cookie-parser');
+
+ app.set('views', path.join(__dirname, 'views'));
+ app.set('view engine', 'ejs');
+
+ app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// load static assets
+app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
+
+app.use(session({
+    secret: uuidv4(), //  '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+    resave: false,
+    saveUninitialized: true
+})); -->

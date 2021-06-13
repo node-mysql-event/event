@@ -29,8 +29,8 @@
       </div>
       <div class="contact">
         <h3>Personal Information</h3>
-        {{msg}}
-        <form method="POST" action="/send" id="verifyForm" enctype="multipart/form-data">
+      
+        <!-- <form method="POST" action="/send" id="verifyForm" enctype="multipart/form-data">
           <p>
             <label>Name</label>
             <input type="text" name="name" id="name">
@@ -68,7 +68,7 @@
           </p>
           <p>
             <label>State</label>
-            <!-- <input type="text" name="state" id="state"> -->
+
             <select id="state" name="state">
               <option value="Australian Capital Territory">Australian Capital Territory</option>
               <option value="New South Wales">New South Wales</option>
@@ -86,7 +86,9 @@
           </p>
           <p>
             <label for="img">Select image</label>
-            <input type="file" id="img" name="img" accept="image/*" multiple >
+
+            <input type="file" name="img" id="img" />
+
           </p>
           <p class="full">
            <label>Description</label>
@@ -98,7 +100,86 @@
           <div class="form-group">
          <div
            class="g-recaptcha"
-           data-sitekey="6LcIa8gaAAAAAE6-6H1nis9Cbk1Sa5VZ3iCOG0r9"
+           data-sitekey="6LdHYBcbAAAAAPuifg6MgwfMBAQBA1ukSlOJmt09"
+         ></div>
+       </div>
+
+          <p class="full">
+            <button type="submit">Submit</button>
+          </p>
+        </form> -->
+
+        <form action="/send" enctype="multipart/form-data" method="post">
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name">
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email">
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone">
+          </p>
+          <br>
+            <h3>Event Information</h3>
+            <br>
+          <p>
+            <label>Title</label>
+            <input type="text" name="title" id="title">
+          </p>
+          <p>
+            <label>Date</label>
+            <input type="date" name="date" id="date">
+          </p>
+          <p>
+            <label>Time</label>
+            <input type="time" name="time" id="time">
+          </p>
+          <p>
+            <label>Venue</label>
+            <input type="text" name="venue" id="venue">
+          </p>
+          <p>
+            <label>City</label>
+            <input type="text" name="city" id="city">
+          </p>
+          <p>
+            <label>State</label>
+
+            <select id="state" name="state">
+              <option value="Australian Capital Territory">Australian Capital Territory</option>
+              <option value="New South Wales">New South Wales</option>
+              <option value="Northern Territory">Northern Territory</option>
+              <option value="Queensland">Queensland</option>
+              <option value="South Australia">South Australia</option>
+              <option value="Tasmania">Tasmania</option>
+              <option value="Victoria">Victoria</option>
+              <option value="Western Australia">Western Australia</option>
+            </select>
+          </p>
+          <p>
+            <label>Postal Code</label>
+            <input type="text" name="code" id="code" >
+          </p>
+          <p>
+            <label for="img">Select image</label>
+
+            <input type="file" name="uploaded_file" id="img" multiple/>
+
+          </p>
+          <p class="full">
+           <label>Description</label>
+            <textarea name="description" id="description" rows="5"></textarea>
+          </p>
+
+
+
+          <div class="form-group">
+         <div
+           class="g-recaptcha"
+           data-sitekey="6LdHYBcbAAAAAPuifg6MgwfMBAQBA1ukSlOJmt09"
          ></div>
        </div>
 
@@ -106,6 +187,7 @@
             <button type="submit">Submit</button>
           </p>
         </form>
+
       </div>
     </div>
   </div>
