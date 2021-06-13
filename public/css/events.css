@@ -232,11 +232,43 @@ h4{
 /* Responsive columns */
 @media screen and (max-width: 600px) {
   .column {
-    width: 100%;
+    width: 95%;
     display: block;
     margin-bottom: 20px;
   }
   .header{
-    width:100%;
+    width:104%;
+
+  }
+  .row{
+    margin:0px 5px;
+  }
+  #jets{
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    left:-65px;
+  }
+  #logo{
+    width:80px;
+    height:auto;
+    position: relative;
+    left:-55px;
+
+
+  }
+  .navbar-right{
+
+    display:inline-inline-block;
+      width:20px;
+      font-size: 10px;
+      position: relative;
+      left:-25px;
+  }
+  .navbar{
+    margin:-5px;
+  }
+  span{
+    margin:3px;
   }
 }
