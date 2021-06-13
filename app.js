@@ -84,7 +84,11 @@ app.get('/registration-form', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('registration-form');
+  var sql='SELECT * FROM selected_users';
+  mysqlConnection.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('events', { title: 'User List', userData: data});
+});
 });
 
 
