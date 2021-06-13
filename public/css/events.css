@@ -112,14 +112,6 @@ padding: -10px 0px;}
   clear: both;
 }
 
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
 
 /* Style the counter cards */
 .card {
@@ -234,4 +226,17 @@ h4{
 .empty{
   width:180%;
   height:300px;
+}
+
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .header{
+    width:100%;
+  }
 }
