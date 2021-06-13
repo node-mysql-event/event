@@ -146,8 +146,8 @@
 </div>
 <% } else{ %>
   <div class="row">
-  <div class="column">
-    <div class="card" id="myImg" mytitle="card <%=i %>">
+  <div class="column empty">
+    <div class="card empty" id="myImg" mytitle="card <%=i %>">
       <br>
       <br>
       <p>No records found here!</p>
@@ -174,13 +174,6 @@
 <script>
 // Get the modal
 var modal = document.getElementById("myModal");
-// var content = document.getElementById("content");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-// var img = document.getElementsByClassName("card");
-
-// var modalImg = document.getElementById("img01");
-// var captionText = document.getElementById("caption");
 
 const els = document.querySelectorAll(".card")
 for (const el of els) {
@@ -193,13 +186,6 @@ for (const el of els) {
   })
 }
 
-// el.onclick = function(){
-//
-//
-//   // // content.style.display = "block";
-//   // modalImg.innerHTML = this.innerHTML;
-//   // // captionText.innerHTML = this.alt;
-// }
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -212,40 +198,3 @@ span.onclick = function() {
 
 </body>
 </html>
-
-
-
-
-
-
-
-<!-- // Static folder
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
-// Body Parser Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-
-//fetch databasevar
-logger = require('morgan');
-var cookieParser = require('cookie-parser');
-
- app.set('views', path.join(__dirname, 'views'));
- app.set('view engine', 'ejs');
-
- app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-// load static assets
-app.use('/static', express.static(path.join(__dirname, 'public')))
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
-
-app.use(session({
-    secret: uuidv4(), //  '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-    resave: false,
-    saveUninitialized: true
-})); -->

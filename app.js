@@ -56,15 +56,6 @@ require('dotenv').config();
 const app = express();
 
 
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     extname: "handlebars",
-//     defaultLayout: false,
-//     layoutsDir: "views/layouts/"
-//   })
-// );
-// app.set('view engine', 'handlebars');
 
 // Static folder
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -158,98 +149,8 @@ var img = new Array();
 
         });
 
-
-
-
-
-
-
-
-
-
-
-///mail
-    var sql='SELECT * FROM registered_users';
-    mysqlConnection.query(sql, function (err, data, fields) {
-    if (err) throw err;
-
-
-    const output = `
-      <p>You'r response has been successfully submitted</p>
-      <h3>Personal Details</h3>
-      <ul>
-        <li>Name: ${req.body.name}</li>
-        <li>Email: ${req.body.email}</li>
-        <li>Phone: ${req.body.phone}</li>
-      </ul>
-      <h3>Event Details</h3>
-      <ul>
-        <li>Title: ${req.body.title}</li>
-        <li>Date: ${req.body.date}</li>
-        <li>Time: ${req.body.time}</li>
-        <li>Venue: ${req.body.venue}</li>
-        <li>City: ${req.body.city}</li>
-        <li>State: ${req.body.state}</li>
-        <li>Code: ${req.body.code}</li>
-
-        <li>Description: <p>${req.body.description}</p></li>
-      </ul>
-
-
-    `;
-
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-    ignoreTLS: false,
-    secure: false, // true for 465, false for other ports like 587
-      auth: {
-          user: process.env.USER, // generated ethereal user
-          pass: process.env.PASSWORD  // generated ethereal password
-      }
-
-    });
-
-    // setup email data with unicode symbols
-    let mailOptions = {
-        from: process.env.EMAIL, // sender address
-        to: req.body.email, // list of receivers
-        subject: 'Event Registration', // Subject line
-        text: 'Hello world?', // plain text body
-        html: output // html body
-    };
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-        res.render('registration-form', {msg:'Email has been sent'});
-    });
-
-
-    });
-
-
-
-
-
-
-
-
-
-
   });
 
-// app.post('/stats', upload.single('uploaded_file'), function (req, res) {
-//    // req.file is the name of your file in the form above, here 'uploaded_file'
-//    // req.body will hold the text fields, if there were any
-//    console.log(req.file, req.body)
-// });
 
 
 
@@ -263,40 +164,15 @@ var img = new Array();
       saveUninitialized: true
   }));
 
-  // app.use('/route', router);
+
 
   // admin-login route
   app.get('/admin', (req, res) => {
 
-
-
-      // var sql='SELECT * FROM selected_users';
-      // mysqlConnection.query(sql, function (err, data, fields) {
-      // if (err) throw err;
       res.render('admin');
-    // });
+
 
   });
-
-
- // app.get('/dashboard',(req, res)=>{
- //   var sql = "SELECT * FROM registered_users";
- //   sqlConnection.query(sql, (err, rows)=>{
- //     if(err)
- //     {
- //       console.log("failed to fetch data");
- //     }
- //     res.json(rows);
- //   })
- // })
-
-
-
-
-
-
-
-
 
 
  const  credential = {
@@ -346,13 +222,6 @@ var img = new Array();
      })
  })
 
-
-
- // app.post('/delete/:id', (req, res) => {
- //     con.query(`DELETE FROM NodeSQL WHERE id=?;`,id, function (err, result) {
- //         if (err) throw err;
- //     });
- // });
 
  app.use('/delete/:id', function(req, res, next) {
   var id= req.params.id;
