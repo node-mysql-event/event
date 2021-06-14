@@ -125,6 +125,19 @@ padding: -10px 0px;}
   overflow :hidden;
   background-repeat: no-repeat;
   background-size: 350px 200px;
+  height:280px;
+
+}
+
+.modal-content{
+  box-shadow: 15px 15px 10px black;
+ padding: 16px;
+ text-align: center;
+ background-color: #f1f1f1;
+ /* height: 40%; */
+ overflow :hidden;
+ background-repeat: no-repeat;
+ background-size: 350px 200px;
 
 }
 
@@ -239,6 +252,7 @@ h4{
 span{
   margin:5px;
 }
+
 
 
 /* Responsive columns */

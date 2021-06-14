@@ -120,7 +120,7 @@ var img = new Array();
                 console.log("record inserted");
             })
 
-          message = "Successfully! uploaded";
+          message = "Your data has been saved Successfully!";
 
         }
 
@@ -147,7 +147,8 @@ var img = new Array();
 
           // If successful
           // return res.json({ success: true, msg: 'Captcha passed' });
-          res.render('registration-form');
+          res.render('registration-form', {msg: message});
+          
 
 
         });
@@ -278,11 +279,14 @@ app.get('/events', (req, res) => {
 
 
 
-    var sql='SELECT * FROM selected_users';
+    var sql='SELECT * FROM selected_users ORDER BY date(date) ASC,time ASC';
     mysqlConnection.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render('events', { title: 'User List', userData: data});
   });
+
+
+
 
 });
 

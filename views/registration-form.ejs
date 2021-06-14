@@ -28,10 +28,21 @@
         <h1>Event Registration</h1>
       </div>
       <div class="contact">
-        <h3>Personal Information</h3>
 
+
+          <% if(typeof msg !== 'undefined') { %>
+            <div class="alert alert-success">
+        <p><%= msg %></p>
+        </div>
+        <% } %>
+
+
+
+
+          <h3>Personal Information</h3>
 
         <form action="/send" enctype="multipart/form-data" method="post">
+
           <p>
             <label>Name</label>
             <input type="text" name="name" id="name">
